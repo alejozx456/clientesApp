@@ -7,9 +7,11 @@
          <button class="btn btn-rounded btn-warning" routerLink="/clientes/form">Crear Cliente</button>
 
       </div>
-    
+      <div *ngIf="clientes?.length==0" class="alert alert-info">
+         No hay registros en la base de datos
+      </div>
 
-     <table id="tabla" class="table table-bordered  text-white">
+     <table id="tabla" class="table table-bordered  text-white" *ngIf="clientes?.length>0">
          <thead>
              <tr>
                  <th>
@@ -30,6 +32,9 @@
                  <th>
                     editar
                  </th>
+                 <th>
+                  eliminar
+               </th>
              </tr>
          </thead>
          <tbody>
@@ -52,6 +57,9 @@
                  <td>
                     <button class="btn btn-warning" [routerLink]="['/clientes/form', item.id]">Editar</button>
                  </td>
+                 <td>
+                  <button class="btn btn-danger" (click)="delete(item)">Eliminar</button>
+               </td>
              </tr>
          </tbody>
      </table>
