@@ -4,9 +4,11 @@ import { CLIENTES } from './clientes.json';
 import { Observable, throwError } from 'rxjs';
 import { of } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import {map,catchError} from 'rxjs/operators'
+import {map,catchError, tap} from 'rxjs/operators'
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { formatDate, registerLocaleData } from '@angular/common';
+import localeEC from '@angular/common/locales/es-EC';
 @Injectable({
   providedIn: 'root'
 })
@@ -32,10 +34,26 @@ private httpHeaders= new HttpHeaders({
 
   getClientes():Observable<Cliente[]>{
    // return of(CLIENTES);
-   return this.http.get<Cliente[]>(this.urlEndPoint)
-   //this.http.get(this.urlEndPoint).pipe(
-     //map((response)=>response as Cliente[])
-   //);
+  // return this.http.get<Cliente[]>(this.urlEndPoint)
+   return this.http.get(this.urlEndPoint).pipe(
+     tap(response=>{
+      let clientes= response as Cliente[];
+      clientes.forEach(cliente=>{
+        console.log(cliente.nombre)
+      })
+     }),
+     map((response)=>
+     {
+      let clientes= response as Cliente[];
+      return clientes.map(cliente=>{
+       cliente.nombre=cliente.nombre.toUpperCase();
+       cliente.apellido=cliente.apellido.toUpperCase();
+       registerLocaleData(localeEC,'EC')
+       cliente.createAt=formatDate(cliente.createAt,'fullDate','EC')
+       return cliente
+      })
+      })
+   );
   }
 
   create(cliente:Cliente):Observable<Cliente>{
