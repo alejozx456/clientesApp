@@ -11,6 +11,12 @@ import { ClientesComponent } from './clientes/clientes.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormComponent } from './clientes/form.component'
 import { FormsModule } from '@angular/forms';
+import { PaginatorComponent } from './paginator/paginator.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DetalleComponent } from './clientes/detalle/detalle.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +25,18 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     DirectivaComponent,
     ClientesComponent,
-    FormComponent
+    FormComponent,
+    PaginatorComponent,
+    DetalleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
