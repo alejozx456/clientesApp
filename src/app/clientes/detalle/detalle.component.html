@@ -1,8 +1,31 @@
 <div class="card bg-dark text-white">
     <div class="card-header">
-   Hola
+        Cliente
     </div>
     <div class="card-body">
+        <div class="container">
+            <div class="col-sm">
+                <ul *ngIf="cliente" class="list-group">
+                    <li class="list-group-item list-group-item-warning">
+                        {{cliente.nombre}}
+                    </li>
+                    <li class="list-group-item list-group-item-warning">
+                        {{cliente.apellido}}
+                    </li>
+                    <li class="list-group-item list-group-item-warning">
+                        {{cliente.email}}
+                    </li>
+                    <li class="list-group-item list-group-item-warning">
+                        {{cliente.createAt}}
+                    </li>
+                    <li class="list-group-item list-group-item-warning">
+                        {{cliente.region.nombre}}
+                    </li>
+                </ul>
+            </div>
+            <div>
 
+            </div>
+        </div>
     </div>
 </div>

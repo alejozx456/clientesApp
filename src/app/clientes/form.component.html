@@ -60,6 +60,16 @@
     </div>
     <br>
     <div class="form-group row">
+        <label for="region" class="col-form-label col-sm-2">Region</label>
+        <div class="col-sm-6">
+            <select [compareWith]="compararRegion" type="date" class="form-control" [(ngModel)]="cliente.region" name="region" >
+                <option  [ngValue]="undefined">Seleccionar Region</option>
+                <option *ngFor="let region of regiones" [ngValue]="region">{{region.nombre}}</option> 
+            </select>
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
         <div class="col-sm-6">
             <button class="btn btn-warning" role="button" (click)="create()"
             *ngIf="!cliente.id else elseBlock" [disabled]="!clienteForm.form.valid">Crear</button>
