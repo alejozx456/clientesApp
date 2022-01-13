@@ -48,7 +48,7 @@
                                 <td>{{factura.id}}</td>
                                 <td>{{factura.descripcion}}</td>
                                 <td>{{factura.createAt}}</td>
-                                <td>{{factura.total}}</td>
+                                <td>{{factura.total+factura.total*0.12}}</td>
                                 <td><button class="btn btn-warning"
                                     [routerLink]="['/facturas', factura.id]">ver</button></td>
                                     <td>

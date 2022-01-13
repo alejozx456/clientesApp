@@ -42,8 +42,12 @@
             </tbody>
         </table>
         <h3 class="float-right">
-            <span>TOTAL</span>: <span class="badge badge-primary">{{factura.total}}</span>
+            <span>SUBTOTAL</span>: <span class="badge badge-primary">{{factura.total}}</span>
         </h3>
+        <h3 class="float-right">
+            <span>TOTAL</span>: <span class="badge badge-primary">{{factura.total+factura.total*0.12}}</span>
+        </h3>
+        
             <div class="card border-info mb-4">
                 <div class="card card-header text-dark">
                  Observaciones   

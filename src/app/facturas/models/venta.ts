@@ -18,4 +18,19 @@ export class Venta {
         return this.total;
         
     }
+    calcularIva():number{
+        this.total=0;
+        this.items.forEach((item:DetalleVenta)=>{
+            this.total+=this.total+item.calcularImporte()*0.12;
+        });
+        return this.total;
+        
+    }
+    calcularFinal():number{
+        this.total=0;
+        this.items.forEach((item:DetalleVenta)=>{
+            this.total+=this.total+item.calcularImporte()+this.calcularIva()
+        });
+        return this.total;
+    }
 }
