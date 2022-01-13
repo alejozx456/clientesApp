@@ -35,6 +35,9 @@
                  <th>
                   eliminar
                </th>
+               <th>
+                  crear Factura
+               </th>
              </tr>
          </thead>
          <tbody>
@@ -61,6 +64,10 @@
                  </td>
                  <td>
                   <button class="btn btn-danger" (click)="delete(item)">Eliminar</button>
+               </td>
+               <td>
+                  <button class="btn btn-warning" 
+                  [routerLink]="['/facturas/form', item.id]">Crear</button>
                </td>
              </tr>
          </tbody>

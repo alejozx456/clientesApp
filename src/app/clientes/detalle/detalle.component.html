@@ -6,26 +6,64 @@
         <div class="container">
             <div class="col-sm">
                 <ul *ngIf="cliente" class="list-group">
-                    <li class="list-group-item list-group-item-warning">
+                    <li class="list-group-item list-group-item-secondary">
                         {{cliente.nombre}}
                     </li>
-                    <li class="list-group-item list-group-item-warning">
+                    <li class="list-group-item list-group-item-secondary">
                         {{cliente.apellido}}
                     </li>
-                    <li class="list-group-item list-group-item-warning">
+                    <li class="list-group-item list-group-item-secondary">
                         {{cliente.email}}
                     </li>
-                    <li class="list-group-item list-group-item-warning">
+                    <li class="list-group-item list-group-item-secondary">
                         {{cliente.createAt}}
                     </li>
-                    <li class="list-group-item list-group-item-warning">
+                    <li class="list-group-item list-group-item-secondary">
                         {{cliente.region.nombre}}
                     </li>
                 </ul>
+                <div class="alert my-4" *ngIf="cliente.facturas.length==0">
+                    no hay facturas para este cliente
+                </div>
+                <br>
+                <div class="row">
+                    <button class="btn btn-warning" 
+                    [routerLink]="['/facturas/form', cliente.id]">Crear</button>
+                </div>
+                <br>
+                <div class="row">
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Descripcion</th>
+                                <th>fecha</th>
+                                <th>total</th>
+                                <th>detalle</th>
+                                <th>eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let factura of cliente.facturas">
+                                <td>{{factura.id}}</td>
+                                <td>{{factura.descripcion}}</td>
+                                <td>{{factura.createAt}}</td>
+                                <td>{{factura.total}}</td>
+                                <td><button class="btn btn-warning"
+                                    [routerLink]="['/facturas', factura.id]">ver</button></td>
+                                    <td>
+                                        <button class="btn btn-danger btn-sm"
+                                        (click)="delete(factura)">eliminar</button>
+                                    </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div>
 
             </div>
         </div>
     </div>
+    
 </div>

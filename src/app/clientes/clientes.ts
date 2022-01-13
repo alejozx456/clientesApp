@@ -1,3 +1,4 @@
+import { Venta } from "../facturas/models/venta";
 import { Region } from "./region";
 
 export class Cliente{
@@ -7,5 +8,6 @@ export class Cliente{
     createAt:string='';
     email:string='';
     region:Region;
+    facturas: Array<Venta>=[];
 
 }
