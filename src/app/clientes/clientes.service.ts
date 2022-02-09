@@ -10,12 +10,15 @@ import Swal from 'sweetalert2';
 import { formatDate, registerLocaleData } from '@angular/common';
 import localeEC from '@angular/common/locales/es-EC';
 import { Region } from './region';
+
+import { URL_BACKEND } from '../config/config';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ClientesService {
 
-private urlEndPoint:string='http://localhost:8080/api/clientes';
+private urlEndPoint:string=URL_BACKEND+'/api/clientes';
 private httpHeaders= new HttpHeaders({
   'Content-type': 'application/json'
 });

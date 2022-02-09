@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Producto } from '../models/producto';
 import { Venta } from '../models/venta';
+import { URL_BACKEND } from 'src/app/config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FacturasService {
 
-  private urlEndPoint:string='http://localhost:8080/api/facturas';
+  private urlEndPoint:string=URL_BACKEND+'/api/facturas';
   private httpHeaders= new HttpHeaders({
     'Content-type': 'application/json'
   });

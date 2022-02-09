@@ -13,7 +13,7 @@ export class Venta {
     calcularGranTotal():number{
         this.total=0;
         this.items.forEach((item:DetalleVenta)=>{
-            this.total+=this.total+item.calcularImporte();
+            this.total=this.total+item.calcularImporte();
         });
         return this.total;
         
@@ -21,7 +21,7 @@ export class Venta {
     calcularIva():number{
         this.total=0;
         this.items.forEach((item:DetalleVenta)=>{
-            this.total+=this.total+item.calcularImporte()*0.12;
+            this.total=this.total+item.calcularImporte()*0.12;
         });
         return this.total;
         
@@ -29,7 +29,7 @@ export class Venta {
     calcularFinal():number{
         this.total=0;
         this.items.forEach((item:DetalleVenta)=>{
-            this.total+=this.total+item.calcularImporte()+this.calcularIva()
+            this.total=this.total+item.calcularImporte()+this.calcularIva()
         });
         return this.total;
     }
